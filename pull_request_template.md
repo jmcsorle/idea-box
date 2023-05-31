@@ -1,4 +1,4 @@
-# What's for Dinner?
+# IdeaBox
 
 ## Description of the changes proposed in this pull request:
 
