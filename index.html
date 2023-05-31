@@ -2,32 +2,28 @@
 <html lang="en">
     <head>
         <title>IdeaBox</title>
-        <a href>CSS</a>
-
+        <link rel="stylesheet" type="text/css" href="styles.css" />
     </head>
     <body>
         <header>
-            <h1 id="header">IdeaBox</h1>
+            <h1 class="header" id="header">IdeaBox</h1>
         </header>
-        <main>
-            <section id="userInput">
-                <form>
-                    <input type="text" id="title" name="cardMaker" value="Title">
+        <main class="main-container">
+            <section class="input-container">
+                <form class="user-input-form">
+                    <input type="text" id="title" name="card-maker" value="">
                     <label for="title">Title</label>
-                    <input type="text" id="body" name="cardMaker" value="Body">
+                    <input type="text" id="body" name="card-maker" value="">
                     <label for="title">Body</label>
-                    <div><button id="saveButton">Save</button></div>
+                    <button class="save-button" id="save-button">Save</button>
                 </form>
             </section>
-            <section id="display">
+            <section class="display-container" id="display">
                 <article class="saved-cards-grid">
-
                 </article>
             </section>
-
         </main>
     </body>
     <script>
-
     </script>
 </html>
