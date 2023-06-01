@@ -7,33 +7,41 @@
 body{
     display: flex;
     flex-direction: row;
-    height: 95%;
+    height: 100%;
     position: fixed;
-    width: 95%;
-    margin: 10px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
     /* border: solid red; */
 }
 
-header {
+.header-h1 {
     display: flex;
     flex-direction: column;
     justify-content: start;
     background-color: #1F1F3C;
     height: 100%;
-    width: 25%;
+    width: 30%;
     align-items: center;
     /* border: orange solid; */
 }
-.header{
-    font-family: poppins;
+
+h1{
     color: white;
+    font-family: 'poppins', sans-serif;
+    font-weight: 700;
+    font-size: 4rem;
+    margin: 0;
+    padding: 0;
 }
 
 .main-container {
     display: flex;
     flex-direction: column;
-    width: 75%;
+    width: 100%;
     height: 100%;
+    margin: 0;
+    padding: 0;
     /* border: blue solid; */
 }
 
@@ -54,12 +62,32 @@ header {
 }
 
 #title{
-    width: 75%;;
+    width: 75%;
+    line-height: 2rem;
+    border: solid #1F1F3C;
+    border-width: 3px;
+
 }
+
+label{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+}
+
+
 #body{
     width: 75%;;
     height: 100px;
 }
+
+div {
+    display: inline-block;
+    width: 195px;
+    text-align: right;
+    color: #666666;
+    margin: 0;
+}
+
 
 .save-button{
     display: flex;
@@ -83,9 +111,8 @@ header {
 
 .saved-cards-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1f
     grid-gap: 20px;
     padding: 20px;
     border: pink solid;
   }
-
