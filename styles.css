@@ -12,7 +12,6 @@ body{
     width: 100%;
     margin: 0;
     padding: 0;
-    /* border: solid red; */
 }
 
 .header-h1 {
@@ -23,7 +22,6 @@ body{
     height: 100%;
     width: 30%;
     align-items: center;
-    /* border: orange solid; */
 }
 
 h1{
@@ -42,27 +40,35 @@ h1{
     height: 100%;
     margin: 0;
     padding: 0;
-    /* border: blue solid; */
 }
 
 .input-container{
     display: flex;
     flex-direction: column;
-    height: 400px;
+    height: 60%;
 }
 
-.user-input-form{
+.user-input-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     height: 100%;
     width: auto;
     background-color: #A8AAD2;
 }
+.title-containers {
+    display: inline-block;
+    text-align: right;
+    flex-direction: row;
+    width: 85%;
+    height: 100%;
+    margin-top: 20px;
+  }
 
-#title{
-    width: 75%;
+
+.title{
+    width: 90%;
     line-height: 2rem;
     border: solid #1F1F3C;
     border-width: 3px;
@@ -72,32 +78,40 @@ h1{
 label{
     font-family: 'Poppins', sans-serif;
     font-weight: 200;
+    font-size: 24px;
 }
 
-
-#body{
-    width: 75%;;
-    height: 100px;
+.body{
+    width: 90%;
+    line-height: 5rem;    
+    margin-bottom: 10px;
+    border: solid #1F1F3C;
+    border-width: 3px;
 }
 
-div {
-    display: inline-block;
-    width: 195px;
-    text-align: right;
-    color: #666666;
-    margin: 0;
+.save-button-container {
+    display: flex;
+    align-items: start;
+    width: 90%;
+    height: 100%;
+    margin-top: 20px;
+    margin-left: 7.5%;
 }
 
-
-.save-button{
+.save-button {
     display: flex;
     justify-content: center;
+    align-self: center;
     padding: 10px;
-    margin: 5px;
     color: white;
+    border: solid #1F1F3C;
+    line-height: 3rem;
     background-color: #1F1F3C;
-    width: 75%;
-
+    width: 86%;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+    font-size: 24px;
 }
 
 .display-container{
@@ -105,14 +119,29 @@ div {
     align-items: center;
     flex-direction: column;
     background-color: #EAEAF4;
-    height: 100%;
-    /* border: green solid; */
+    height: 80%;
 }
 
 .saved-cards-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1f
+    grid-template-columns: repeat(3, 1f);
     grid-gap: 20px;
-    padding: 20px;
-    border: pink solid;
+    height: 100%;
+    width: 100%;
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
