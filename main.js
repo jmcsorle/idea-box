@@ -2,6 +2,7 @@
 var userTitle = document.querySelector('#title');
 var userBody = document.querySelector('#body');
 var saveButton = document.querySelector('#save-button');
+var savedCardsGrid = document.querySelector('.saved-cards-grid');
 
 // Data model:
 var savedIdeas = [];
@@ -19,7 +20,21 @@ function createIdea() {
 
 function saveIdea() {
     var idea = createIdea();
-    savedIdeas.push(idea);
+    savedIdeas.unshift(idea);
     console.log(savedIdeas);
     event.preventDefault();
+}
+function displayIdea () {
+savedCardsGrid.innerHTML = "";
+
+for (var i = 0; i < savedIdeas.length; i++) {
+    var ideaCard = savedIdeas[i];
+    var ideaCardElement = document.createElement("div");
+    ideaCardElement.classList.add("idea-card");
+    ideaCardElement.innerHTML = `
+      <h2 class="idea-card-title">${userTitle.value}</h2>
+      <p class="idea-card-body">${userBody.value}</p>
+      `;
+    savedCardsGrid.appendChild(ideaCardElement);
+  }
 }
