@@ -3,8 +3,7 @@
     <head>
         <title>IdeaBox</title>
         <link rel="stylesheet" type="text/css" href="styles.css" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?
-family=Poppins:wght@200;700&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;700&display=swap">
     </head>
     <body>
         <header class="header-h1">
@@ -13,16 +12,21 @@ family=Poppins:wght@200;700&display=swap">
         <main class="main-container">
             <section class="input-container">
                 <form class="user-input-form">
-                    <input type="text" id="title" name="card-maker" value="">
-                    <label for="title">Title</label>
-                    <input type="text" id="body" name="card-maker" value="">
-                    <label for="title">Body</label>
-                    <button class="save-button" id="save-button">Save</button>
+                    <div class="title-containers">
+                        <label for="title">Title</label>
+                        <input type="text" id="title" name="card-maker" value="">
+                    </div>
+                    <div class="title-containers">
+                        <label for="title">Body</label>
+                        <input type="text" id="body" name="card-maker" value="">
+                    </div>
+                    <div class="save-button-container">
+                        <button class="save-button" id="save-button">Save</button>
+                    </div>
                 </form>
             </section>
             <section class="display-container" id="display">
-                <article class="saved-cards-grid">
-                </article>
+                <article class="saved-cards-grid"></article>
             </section>
         </main>
         <script src="main.js"></script>
@@ -30,12 +34,22 @@ family=Poppins:wght@200;700&display=swap">
 </html>
 
 
+<!-- <div> -->
+    <!-- <input type="text" id="title" name="card-maker" value=""> -->
+    <!-- <label for="title">Title</label> -->
+<!-- </div> -->
+<!-- <div> -->
+    <!-- <input type="text" id="body" name="card-maker" value=""> -->
+    <!-- <label for="title">Body</label> -->
+<!-- </div> -->
+<!--  -->
 
 
-
-
-
-
+<!-- <input type="text" id="title" name="card-maker" value=""> -->
+<!-- <label for="title">Title</label> -->
+<!-- <input type="text" id="body" name="card-maker" value=""> -->
+<!-- <label for="title">Body</label> -->
+<!--  -->
 
 
 
