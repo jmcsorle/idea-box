@@ -3,8 +3,7 @@
 /* Light Purple: #EAEAF4 */
 /* White: #FFFFFF */
 
-
-body{
+body {
     display: flex;
     flex-direction: row;
     height: 100%;
@@ -24,7 +23,7 @@ body{
     align-items: center;
 }
 
-h1{
+h1 {
     color: white;
     font-family: 'poppins', sans-serif;
     font-weight: 700;
@@ -42,7 +41,7 @@ h1{
     padding: 0;
 }
 
-.input-container{
+.input-container {
     display: flex;
     flex-direction: column;
     height: 60%;
@@ -57,6 +56,7 @@ h1{
     width: auto;
     background-color: #A8AAD2;
 }
+
 .title-containers {
     display: inline-block;
     text-align: right;
@@ -64,26 +64,24 @@ h1{
     width: 85%;
     height: 100%;
     margin-top: 20px;
-  }
+}
 
-
-.title{
+.title {
     width: 90%;
     line-height: 2rem;
     border: solid #1F1F3C;
     border-width: 3px;
-
 }
 
-label{
+label {
     font-family: 'Poppins', sans-serif;
     font-weight: 200;
     font-size: 24px;
 }
 
-.body{
+.body {
     width: 90%;
-    line-height: 5rem;    
+    line-height: 5rem;
     margin-bottom: 10px;
     border: solid #1F1F3C;
     border-width: 3px;
@@ -112,9 +110,15 @@ label{
     font-family: 'Poppins', sans-serif;
     font-weight: 200;
     font-size: 24px;
+    cursor: pointer;
 }
 
-.display-container{
+.save-button:disabled {
+    background-color: #EAEAF4;
+    cursor: default;
+}
+
+.display-container {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -124,15 +128,32 @@ label{
 
 .saved-cards-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1f);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
     height: 100%;
     width: 100%;
-  }
+}
 
+.idea-card {
+    background-color: #FFFFFF;
+    padding: 20px;
+}
 
+.idea-card-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+}
 
-
+.idea-card-body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+}
 
 
 
