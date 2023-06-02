@@ -9,6 +9,8 @@ var savedIdeas = [];
 
 // Event listeners
 saveButton.addEventListener("click", saveIdea);
+userTitle.addEventListener("input", toggleSaveButton);
+userBody.addEventListener("input", toggleSaveButton);
 
 function createIdea() {
     return {
@@ -18,23 +20,42 @@ function createIdea() {
     };
 }
 
-function saveIdea() {
+function saveIdea(event) {
+    event.preventDefault();
+    
+    if (userTitle.value === '' || userBody.value === '') {
+        return;
+    }
+
     var idea = createIdea();
     savedIdeas.unshift(idea);
-    console.log(savedIdeas);
-    event.preventDefault();
-}
-function displayIdea () {
-savedCardsGrid.innerHTML = "";
+    displayIdea();
 
-for (var i = 0; i < savedIdeas.length; i++) {
-    var ideaCard = savedIdeas[i];
-    var ideaCardElement = document.createElement("div");
-    ideaCardElement.classList.add("idea-card");
-    ideaCardElement.innerHTML = `
-      <h2 class="idea-card-title">${userTitle.value}</h2>
-      <p class="idea-card-body">${userBody.value}</p>
-      `;
-    savedCardsGrid.appendChild(ideaCardElement);
-  }
+    userTitle.value = '';
+    userBody.value = '';
+    saveButton.disabled = true;
+}
+
+function displayIdea() {
+    savedCardsGrid.innerHTML = "";
+
+    for (var i = 0; i < savedIdeas.length; i++) {
+        var ideaCard = savedIdeas[i];
+        var ideaCardElement = document.createElement("div");
+        ideaCardElement.classList.add("idea-card");
+        ideaCardElement.innerHTML = `
+            <h2 class="idea-card-title">${ideaCard.title}</h2>
+            <p class="idea-card-body">${ideaCard.body}</p>
+        `;
+        savedCardsGrid.appendChild(ideaCardElement);
+    }
+}
+
+
+function toggleSaveButton() {
+    if (userTitle.value === '' || userBody.value === '') {
+        saveButton.disabled = true;
+    } else {
+        saveButton.disabled = false;
+    }
 }
