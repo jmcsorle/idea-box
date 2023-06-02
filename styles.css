@@ -39,6 +39,7 @@ h1 {
     height: 100%;
     margin: 0;
     padding: 0;
+    overflow: scroll visible;
 }
 
 .input-container {
@@ -131,26 +132,38 @@ label {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
     height: 100%;
-    width: 100%;
+    width: 95%;
+    margin: 1.5em 2.5em 1.5em 6em;
 }
 
 .idea-card {
     background-color: #FFFFFF;
     padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+    font-size: 1rem;
+    border: solid #1F1F3C;
+    min-width: 7vw;
+    max-width: 17vw;
+    min-height: 23vh;
+    max-height: 33vh;
+    border-width: 3px;
+    text-align: center;
 }
 
 .idea-card-title {
     font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 24px;
-    margin: 0;
+    font-weight: 400 bold;
+    font-size: 1.5rem;
+    margin-top: 2vh;
     padding: 0;
+    /* border: solid #1F1F3C; */
 }
 
 .idea-card-body {
     font-family: 'Poppins', sans-serif;
-    font-weight: 200;
-    font-size: 18px;
+    font-weight: 400;
+    font-size: 1.5rem;
     margin: 0;
     padding: 0;
 }
