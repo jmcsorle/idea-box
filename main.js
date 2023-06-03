@@ -62,7 +62,7 @@ function displayIdea() {
     // Add event listeners to delete icons
     var starIcon = document.querySelectorAll('.star-icon');
     starIcon.forEach(function(icon) {
-      icon.addEventListener('click', favoriteIdea);
+        icon.addEventListener('click', favoriteIdea);
     });
 
     var deleteIcons = document.querySelectorAll('.delete-icon');
@@ -86,8 +86,25 @@ function deleteIdea(event) {
     displayIdea();
 }
 
+
 function favoriteIdea(event) {
-  var index = parseInt(event.target.getAttribute('data-index'));
-  favoriteIdeas.push(index, 1)
-  displayIdea(); 
+    var iconContainer = event.target.parentElement;
+    var index = iconContainer.getAttribute("data-index");
+    var clickedIdea = savedIdeas[index];
+
+    clickedIdea.favorite = !clickedIdea.favorite;
+
+    if (clickedIdea.favorite) {
+        if (!favoriteIdeas.includes(clickedIdea)) {
+            favoriteIdeas.push(clickedIdea);
+        }
+    } else {
+        var favoriteIndex = favoriteIdeas.indexOf(clickedIdea);
+        if (favoriteIndex !== -1) {
+            favoriteIdeas.splice(favoriteIndex, 1);
+        }
+    }
+
+    displayIdea();
 }
+
