@@ -171,11 +171,13 @@ label {
 }
 
 .icons {
-    height: 3em;
-    width: 3em;
+    height: 5em;
+    width: 5em;
     margin: 3px;
     cursor: pointer;
 }
+
+
 
 .icon-container {
     display: flex;
