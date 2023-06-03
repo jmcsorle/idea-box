@@ -4,8 +4,10 @@ var userBody = document.querySelector('#body');
 var saveButton = document.querySelector('#save-button');
 var savedCardsGrid = document.querySelector('.saved-cards-grid');
 
+
 // Data model:
 var savedIdeas = [];
+var favoriteIdeas = [];
 
 // Event listeners
 saveButton.addEventListener("click", saveIdea);
@@ -16,7 +18,8 @@ function createIdea() {
     return {
         id: Date.now(),
         title: userTitle.value,
-        body: userBody.value
+        body: userBody.value,
+        favorite: false
     };
 }
 
@@ -44,9 +47,9 @@ function displayIdea() {
         var ideaCardElement = document.createElement("div");
         ideaCardElement.classList.add("idea-card");
         ideaCardElement.innerHTML = `
-            <div class="icon-container">
-              <img class="star-icon icons" src="" alt=""></img>
-              <img class="delete-icon icons" src="" alt="" data-index="${i}"></img>
+            <div class="icon-container" data-index="${i}">
+              <img class="star-icon icons" src="assets/star.svg" alt="favorite"></img>
+              <img class="delete-icon icons" src="assets/delete.svg" alt="delete"></img>
             </div>
             <div class="idea-container">
               <h2 class="idea-card-title">${ideaCard.title}</h2>
@@ -57,10 +60,16 @@ function displayIdea() {
     }
 
     // Add event listeners to delete icons
+    var starIcon = document.querySelectorAll('.star-icon');
+    starIcon.forEach(function(icon) {
+      icon.addEventListener('click', favoriteIdea);
+    });
+
     var deleteIcons = document.querySelectorAll('.delete-icon');
     deleteIcons.forEach(function(icon) {
         icon.addEventListener('dblclick', deleteIdea);
     });
+
 }
 
 function toggleSaveButton() {
@@ -75,4 +84,10 @@ function deleteIdea(event) {
     var index = parseInt(event.target.getAttribute('data-index'));
     savedIdeas.splice(index, 1);
     displayIdea();
+}
+
+function favoriteIdea(event) {
+  var index = parseInt(event.target.getAttribute('data-index'));
+  favoriteIdeas.push(index, 1)
+  displayIdea(); 
 }
