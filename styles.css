@@ -124,7 +124,7 @@ label {
     align-items: center;
     flex-direction: column;
     background-color: #EAEAF4;
-    height: 80%;
+    height: 100%;
 }
 
 .saved-cards-grid {
@@ -137,6 +137,9 @@ label {
 }
 
 .idea-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     background-color: #FFFFFF;
     padding: 20px;
     font-family: 'Poppins', sans-serif;
@@ -157,7 +160,6 @@ label {
     font-size: 1.5rem;
     margin-top: 2vh;
     padding: 0;
-    /* border: solid #1F1F3C; */
 }
 
 .idea-card-body {
