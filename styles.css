@@ -177,8 +177,6 @@ label {
     cursor: pointer;
 }
 
-
-
 .icon-container {
     display: flex;
     flex-direction: row;
@@ -194,6 +192,9 @@ label {
     justify-content: space-evenly;
 }
 
+.hidden {
+    display: none!important;
+}
 
 
 
