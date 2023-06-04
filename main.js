@@ -127,7 +127,7 @@ function unFavoriteIdea(event){
 }
 
 
-function showFavorites(){
+function filterFavorites(){
 var favoritedIdeas = [];
     for(var i=0; i<savedIdeas.length; i++){
         if(savedIdeas[i].favorite === true){

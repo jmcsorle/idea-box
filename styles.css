@@ -19,17 +19,32 @@ body {
     justify-content: start;
     background-color: #1F1F3C;
     height: 100%;
-    width: 30%;
+    width: 25%;
     align-items: center;
 }
 
 h1 {
     color: white;
     font-family: 'poppins', sans-serif;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 4rem;
     margin: 0;
     padding: 0;
+}
+
+.show-favorites-button {
+    color: #1F1F3C;
+    font-family: 'poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    border: none;
+    background-color: #A8AAD2;
+    margin-top: .8em;
+    padding: 0.1em;
+    max-height: 20vh;
+    min-height: 9vh;
+    width: 18vw;
+
 }
 
 .main-container {
