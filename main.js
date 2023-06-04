@@ -4,6 +4,7 @@ var userTitle = document.querySelector('#title');
 var userBody = document.querySelector('#body');
 var saveButton = document.querySelector('#save-button');
 var savedCardsGrid = document.querySelector('.saved-cards-grid');
+var showFavoritesButton = document.querySelector('.show-favorites-button');
 
 
 // Data model:
@@ -17,9 +18,10 @@ saveButton.addEventListener("click", function(event){
     displayIdea();
 });
 
-
 userTitle.addEventListener("input", toggleSaveButton);
 userBody.addEventListener("input", toggleSaveButton);
+showFavoritesButton.addEventListener("click", toggleShowFavorites);
+
 
 savedCardsGrid.addEventListener("click", function(event) {
     if(event.target.classList.contains('white-star')){
@@ -59,22 +61,29 @@ function displayIdea() {
 
     for (var i = 0; i < savedIdeas.length; i++) {
         var ideaCard = savedIdeas[i];
-        var ideaCardElement = document.createElement("div");
-        ideaCardElement.classList.add("idea-card");
-
-        ideaCardElement.innerHTML = `
-            <div class="icon-container" id="${ideaCard.id}">
-              <img class="${ideaCard.class}" src="${ideaCard.src}" ></img>
-              <img class="delete-icon icons" src="assets/delete.svg" alt="delete"></img>
-            </div>
-            <div class="idea-container">
-              <h2 class="idea-card-title">${ideaCard.title}</h2>
-              <p class="idea-card-body">${ideaCard.body}</p>
-            </div>
-        `;
+        var ideaCardElement = createIdeaCardElement(ideaCard);
         savedCardsGrid.appendChild(ideaCardElement);
     }
 }
+
+function createIdeaCardElement(ideaCard) {
+    var ideaCardElement = document.createElement("div");
+    ideaCardElement.classList.add("idea-card");
+
+    ideaCardElement.innerHTML = `
+        <div class="icon-container" id="${ideaCard.id}">
+          <img class="${ideaCard.class}" src="${ideaCard.src}" ></img>
+          <img class="delete-icon icons" src="assets/delete.svg" alt="delete"></img>
+        </div>
+        <div class="idea-container">
+          <h2 class="idea-card-title">${ideaCard.title}</h2>
+          <p class="idea-card-body">${ideaCard.body}</p>
+        </div>
+    `;
+
+    return ideaCardElement;
+}
+
 
 function toggleSaveButton() {
     if (userTitle.value === '' || userBody.value === '') {
@@ -120,10 +129,40 @@ function unFavoriteIdea(event){
 
 function showFavorites(){
 var favoritedIdeas = [];
-    for(i=0; i<savedIdeas.length; i++){
+    for(var i=0; i<savedIdeas.length; i++){
         if(savedIdeas[i].favorite === true){
             favoritedIdeas.push(savedIdeas[i])
         }
     }
     displayIdea()
 }
+
+function toggleShowFavorites() {
+    if (showFavoritesButton.textContent === "Show Starred Ideas") {
+        showFavorites();
+    } else {
+        showAllIdeas();
+    }
+}
+
+function showFavorites() {
+    var favoriteIdeas = savedIdeas.filter(function(idea) {
+        return idea.favorite;
+    });
+    savedCardsGrid.innerHTML = "";
+    favoriteIdeas.forEach(function(idea) {
+        var ideaCardElement = createIdeaCardElement(idea);
+        savedCardsGrid.appendChild(ideaCardElement);
+    });
+    showFavoritesButton.textContent = "Show All Ideas";
+}
+
+function showAllIdeas() {
+    savedCardsGrid.innerHTML = "";
+    savedIdeas.forEach(function(idea) {
+        var ideaCardElement = createIdeaCardElement(idea);
+        savedCardsGrid.appendChild(ideaCardElement);
+    });
+    showFavoritesButton.textContent = "Show Starred Ideas";
+}
+
