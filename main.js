@@ -1,3 +1,4 @@
+
 // Query selectors
 var userTitle = document.querySelector('#title');
 var userBody = document.querySelector('#body');
@@ -7,31 +8,45 @@ var savedCardsGrid = document.querySelector('.saved-cards-grid');
 
 // Data model:
 var savedIdeas = [];
-var favoriteIdeas = [];
+
 
 // Event listeners
-saveButton.addEventListener("click", saveIdea);
+saveButton.addEventListener("click", function(event){
+    event.preventDefault();
+    saveIdea();
+    displayIdea();
+});
+
+
 userTitle.addEventListener("input", toggleSaveButton);
 userBody.addEventListener("input", toggleSaveButton);
 
+savedCardsGrid.addEventListener("click", function(event) {
+    if(event.target.classList.contains('white-star')){
+        favoriteIdea(event);
+    }else if(event.target.classList.contains('orange-star')){
+        unFavoriteIdea(event);
+    }else if(event.target.classList.contains('delete-icon')){
+        deleteIdea(event);
+    }
+});
+
+// Functions:
 function createIdea() {
     return {
         id: Date.now(),
         title: userTitle.value,
         body: userBody.value,
-        favorite: false
+        favorite: false,
+        class: 'white-star',
+        src: 'assets/star.svg'
     };
 }
 
-function saveIdea(event) {
-    event.preventDefault();
-
-    if (userTitle.value === '' || userBody.value === '') {
-        return;
-    }
-
+function saveIdea(event) {   
     var idea = createIdea();
-    savedIdeas.unshift(idea);
+
+    savedIdeas.push(idea);
     displayIdea();
 
     userTitle.value = '';
@@ -46,9 +61,10 @@ function displayIdea() {
         var ideaCard = savedIdeas[i];
         var ideaCardElement = document.createElement("div");
         ideaCardElement.classList.add("idea-card");
+
         ideaCardElement.innerHTML = `
-            <div class="icon-container" data-index="${i}">
-              <img class="star-icon icons" src="assets/star.svg" alt="favorite"></img>
+            <div class="icon-container" id="${ideaCard.id}">
+              <img class="${ideaCard.class}" src="${ideaCard.src}" ></img>
               <img class="delete-icon icons" src="assets/delete.svg" alt="delete"></img>
             </div>
             <div class="idea-container">
@@ -58,18 +74,6 @@ function displayIdea() {
         `;
         savedCardsGrid.appendChild(ideaCardElement);
     }
-
-    // Add event listeners to delete icons
-    var starIcon = document.querySelectorAll('.star-icon');
-    starIcon.forEach(function(icon) {
-        icon.addEventListener('click', favoriteIdea);
-    });
-
-    var deleteIcons = document.querySelectorAll('.delete-icon');
-    deleteIcons.forEach(function(icon) {
-        icon.addEventListener('dblclick', deleteIdea);
-    });
-
 }
 
 function toggleSaveButton() {
@@ -80,31 +84,35 @@ function toggleSaveButton() {
     }
 }
 
-function deleteIdea(event) {
-    var index = parseInt(event.target.getAttribute('data-index'));
-    savedIdeas.splice(index, 1);
-    displayIdea();
-}
-
-
-function favoriteIdea(event) {
-    var iconContainer = event.target.parentElement;
-    var index = iconContainer.getAttribute("data-index");
-    var clickedIdea = savedIdeas[index];
-
-    clickedIdea.favorite = !clickedIdea.favorite;
-
-    if (clickedIdea.favorite) {
-        if (!favoriteIdeas.includes(clickedIdea)) {
-            favoriteIdeas.push(clickedIdea);
-        }
-    } else {
-        var favoriteIndex = favoriteIdeas.indexOf(clickedIdea);
-        if (favoriteIndex !== -1) {
-            favoriteIdeas.splice(favoriteIndex, 1);
+function deleteIdea(event){
+    for(var i= 0; i<savedIdeas.length; i++){
+        if(event.target.classList.contains('delete-icon') && parseInt(event.target.parentElement.getAttribute('id')) === savedIdeas[i].id){
+        savedIdeas.splice(i, 1);
         }
     }
-
     displayIdea();
 }
 
+function favoriteIdea(event) {
+   for (var i = 0; i < savedIdeas.length; i++) {
+        if(event.target.classList.contains('white-star') && parseInt(event.target.parentElement.getAttribute('id')) === savedIdeas[i].id){
+            savedIdeas[i].favorite = true;
+            savedIdeas[i].class = "orange-star"
+            savedIdeas[i].src = "assets/star-active.svg"
+            console.log(savedIdeas[i].class)
+        }
+   }
+   displayIdea();
+}
+
+function unFavoriteIdea(event){
+    for (var i = 0; i < savedIdeas.length; i++) {
+        if(event.target.classList.contains('orange-star') && parseInt(event.target.parentElement.getAttribute('id')) === savedIdeas[i].id){
+        savedIdeas[i].favorite = false;
+        savedIdeas[i].class = "white-star"
+        savedIdeas[i].src = "assets/star.svg"
+
+        }
+    }
+    displayIdea();
+}
