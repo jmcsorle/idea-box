@@ -116,3 +116,14 @@ function unFavoriteIdea(event){
     }
     displayIdea();
 }
+
+
+function showFavorites(){
+var favoritedIdeas = [];
+    for(i=0; i<savedIdeas.length; i++){
+        if(savedIdeas[i].favorite === true){
+            favoritedIdeas.push(savedIdeas[i])
+        }
+    }
+    displayIdea()
+}
